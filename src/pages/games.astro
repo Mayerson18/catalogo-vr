@@ -2,6 +2,8 @@
 import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 const saberBeatsImage = "https://scontent.oculuscdn.com/v/t64.5771-25/38974868_654318306881301_4701637681645090957_n.jpg?stp=dst-jpg_q92_s720x720&_nc_cat=1&ccb=1-7&_nc_sid=6e7a0a&_nc_ohc=V5dBXt3nSboAX-my_hW&_nc_ht=scontent.oculuscdn.com&oh=00_AfCQFN0MHH_FUK2L_iGtwL5GHzp6On8sylW8Tkm0Ob80QA&oe=65D89275"
+const bobSpongeImage = "https://scontent.oculuscdn.com/v/t64.5771-25/39003265_1599071400834248_1289897579555989791_n.jpg?stp=dst-jpg_q92_s720x720&_nc_cat=1&ccb=1-7&_nc_sid=6e7a0a&_nc_ohc=rBR2qvPNC5IAX_MSeRD&_nc_ht=scontent.oculuscdn.com&oh=00_AfD_3Xnl-egtC9eHgJw4fbYmZX0ZGTMCCdIHFNfM6oMYoQ&oe=65D833AB"
+const wrathImage = "https://scontent.oculuscdn.com/v/t64.5771-25/75322597_1564875450669182_5138164856136859425_n.jpg?stp=dst-jpg_q92_s720x720&_nc_cat=1&ccb=1-7&_nc_sid=6e7a0a&_nc_ohc=I0PFKA-E02kAX-0_31D&_nc_ht=scontent.oculuscdn.com&oh=00_AfAXsJvGE1_Imx-wJstmd_wLAnk9yxJCJdMHpjSm6bv7Nw&oe=65D8CEDC"
 ---
 
 <Layout title="Welcome to Astro.">
@@ -11,7 +13,17 @@ const saberBeatsImage = "https://scontent.oculuscdn.com/v/t64.5771-25/38974868_6
     <div class="container-games">
       <div class="item-games">
         <a href="https://www.meta.com/es-la/experiences/2448060205267927/" target="_blank">
-          <Image src={saberBeatsImage} inferSize={true} alt="A bird sitting on a nest of eggs."/>
+          <Image src={saberBeatsImage} inferSize={true} alt="Saber beats"/>
+        </a>
+      </div>
+      <div class="item-games">
+        <a href="https://www.meta.com/es-la/experiences/2603836099654226" target="_blank">
+          <Image src={wrathImage} inferSize={true} alt="Wrath"/>
+        </a>
+      </div>
+      <div class="item-games">
+        <a href="https://www.meta.com/es-la/experiences/2299465166734471/" target="_blank">
+          <Image src={bobSpongeImage} inferSize={true} alt="Bob Sponge"/>
         </a>
       </div>
     </div>
@@ -35,6 +47,9 @@ const saberBeatsImage = "https://scontent.oculuscdn.com/v/t64.5771-25/38974868_6
   }
   .item-games {
     cursor: pointer;
+  }
+  .item-games:hover {
+    opacity: .7;
   }
 	main {
 		margin: auto;
