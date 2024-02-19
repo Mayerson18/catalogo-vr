@@ -1,0 +1,95 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+const saberBeatsImage = "https://scontent.oculuscdn.com/v/t64.5771-25/38974868_654318306881301_4701637681645090957_n.jpg?stp=dst-jpg_q92_s720x720&_nc_cat=1&ccb=1-7&_nc_sid=6e7a0a&_nc_ohc=V5dBXt3nSboAX-my_hW&_nc_ht=scontent.oculuscdn.com&oh=00_AfCQFN0MHH_FUK2L_iGtwL5GHzp6On8sylW8Tkm0Ob80QA&oe=65D89275"
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+    
+		<h1>Catalogo de <span class="text-gradient">Juegos</span></h1>
+    <div class="container-games">
+      <div class="item-games">
+        <a href="https://www.meta.com/es-la/experiences/2448060205267927/" target="_blank">
+          <Image src={saberBeatsImage} inferSize={true} alt="A bird sitting on a nest of eggs."/>
+        </a>
+      </div>
+    </div>
+	</main>
+</Layout>
+
+<style>
+  img {
+    width: 100%;
+  }
+  .container-games {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(
+        300px,
+        1fr
+      )
+    );
+    gap: 16px;
+  }
+  .item-games {
+    cursor: pointer;
+  }
+	main {
+		margin: auto;
+		padding: 1rem;
+		width: 800px;
+		max-width: calc(100% - 2rem);
+		color: white;
+		font-size: 20px;
+		line-height: 1.6;
+	}
+	.astro-a {
+		position: absolute;
+		top: -32px;
+		left: 50%;
+		transform: translatex(-50%);
+		width: 220px;
+		height: auto;
+		z-index: -1;
+	}
+	h1 {
+		font-size: 4rem;
+		font-weight: 700;
+		line-height: 1;
+		text-align: center;
+		margin-bottom: 1em;
+	}
+	.text-gradient {
+		background-image: var(--accent-gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 400%;
+		background-position: 0%;
+	}
+	.instructions {
+		margin-bottom: 2rem;
+		border: 1px solid rgba(var(--accent-light), 25%);
+		background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
+		padding: 1.5rem;
+		border-radius: 8px;
+	}
+	.instructions code {
+		font-size: 0.8em;
+		font-weight: bold;
+		background: rgba(var(--accent-light), 12%);
+		color: rgb(var(--accent-light));
+		border-radius: 4px;
+		padding: 0.3em 0.4em;
+	}
+	.instructions strong {
+		color: rgb(var(--accent-light));
+	}
+	.link-card-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+		gap: 2rem;
+		padding: 0;
+	}
+</style>
