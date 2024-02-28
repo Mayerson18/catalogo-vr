@@ -1,45 +1,76 @@
 ---
 import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
-const saberBeatsImage = "https://scontent.oculuscdn.com/v/t64.5771-25/38974868_654318306881301_4701637681645090957_n.jpg?stp=dst-jpg_q92_s720x720&_nc_cat=1&ccb=1-7&_nc_sid=6e7a0a&_nc_ohc=V5dBXt3nSboAX-my_hW&_nc_ht=scontent.oculuscdn.com&oh=00_AfCQFN0MHH_FUK2L_iGtwL5GHzp6On8sylW8Tkm0Ob80QA&oe=65D89275"
-const bobSpongeImage = "https://scontent.oculuscdn.com/v/t64.5771-25/39003265_1599071400834248_1289897579555989791_n.jpg?stp=dst-jpg_q92_s720x720&_nc_cat=1&ccb=1-7&_nc_sid=6e7a0a&_nc_ohc=rBR2qvPNC5IAX_MSeRD&_nc_ht=scontent.oculuscdn.com&oh=00_AfD_3Xnl-egtC9eHgJw4fbYmZX0ZGTMCCdIHFNfM6oMYoQ&oe=65D833AB"
-const wrathImage = "https://scontent.oculuscdn.com/v/t64.5771-25/75322597_1564875450669182_5138164856136859425_n.jpg?stp=dst-jpg_q92_s720x720&_nc_cat=1&ccb=1-7&_nc_sid=6e7a0a&_nc_ohc=I0PFKA-E02kAX-0_31D&_nc_ht=scontent.oculuscdn.com&oh=00_AfAXsJvGE1_Imx-wJstmd_wLAnk9yxJCJdMHpjSm6bv7Nw&oe=65D8CEDC"
+const saberBeatsImage = "https://cdn.akamai.steamstatic.com/steam/apps/620980/ss_b65444cc4513f34bd41fa6b0fe96cf11d94fea8d.1920x1080.jpg?t=1701968029"
+const bobSpongeImage = "https://scontent.oculuscdn.com/v/t64.5771-25/39003265_1599071400834248_1289897579555989791_n.png?_nc_cat=1&ccb=1-7&_nc_sid=6e7a0a&_nc_ohc=W4BgfDtZTZUAX9V3izo&_nc_ht=scontent.oculuscdn.com&oh=00_AfBMukFZvFgaSUHKNqe2TYm3BLhM2KyfJTLmrE2siX7zSw&oe=65E33A94"
+const wrathImage = "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt61d3fb1ce8d65caf/650ec857bcf59070a2201c44/asgardswrathcombatfeatured.jpg"
+const wp = "https://wa.me/3506208514";
+const data = [
+	{
+		title: "Beat Saber",
+		description: "",
+		image: saberBeatsImage,
+		link: "https://beatsaber.com/",
+	},
+	{
+		title: "Wrath of Asgard 2",
+		description: "",
+		image: wrathImage,
+		link: "https://www.meta.com/es-la/experiences/2603836099654226",
+	},
+	{
+		title: "Epic roller coaster",
+		description: "",
+		image: bobSpongeImage,
+		link: "https://www.meta.com/es-la/experiences/2299465166734471/",
+	},
+]
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Catalogo de juegos">
 	<main>
-    
+		<div class="contact">
+			<a href={wp} target="_blank">
+				<Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/2062095_application_chat_communication_logo_whatsapp_icon.svg/1024px-2062095_application_chat_communication_logo_whatsapp_icon.svg.png" alt="whatsapp" width="50" height="50"/>
+			</a>
+		</div>
 		<h1>Catalogo de <span class="text-gradient">Juegos</span></h1>
     <div class="container-games">
-      <div class="item-games">
-        <a href="https://www.meta.com/es-la/experiences/2448060205267927/" target="_blank">
-          <Image src={saberBeatsImage} inferSize={true} alt="Saber beats"/>
-        </a>
-      </div>
-      <div class="item-games">
-        <a href="https://www.meta.com/es-la/experiences/2603836099654226" target="_blank">
-          <Image src={wrathImage} inferSize={true} alt="Wrath"/>
-        </a>
-      </div>
-      <div class="item-games">
-        <a href="https://www.meta.com/es-la/experiences/2299465166734471/" target="_blank">
-          <Image src={bobSpongeImage} inferSize={true} alt="Bob Sponge"/>
-        </a>
-      </div>
+			{
+				data.map((d) => (
+					<div class="item-games">
+						<h3>{d.title}</h3>
+						<a href={d.link} target="_blank">
+							<Image src={d.image} inferSize={true} alt={d.title}/>
+						</a>
+					</div>
+				))
+			}
     </div>
 	</main>
 </Layout>
 
 <style>
+
   img {
     width: 100%;
+		max-height: 300px;
+		object-fit: cover;
+		border-radius: 8px;
+		object-position: center;
   }
+	.contact {
+		position: fixed;
+		bottom: 1rem;
+		right: 1rem;
+		z-index: 100;
+	}
   .container-games {
     display: grid;
     grid-template-columns: repeat(
       auto-fit,
       minmax(
-        300px,
+        200px,
         1fr
       )
     );
